@@ -4,39 +4,22 @@ import random
 
 #Insert the name/ID of drafters
 playerList = ["emil", "bob", "henry", "honke", "robin", "micke", "jonas", "andrea"]
-colorsList = ["white", "blue", "black", "red", "green"]
+colorList = ["white", "blue", "black", "red", "green"]
 assignedList = []
 
 #Shuffle the players as well to prevent knowledge of 5 first not sharing color etc.
 random.shuffle(playerList)
 
-
 amountOfPlayers = len(playerList)
-loopAmount = int(amountOfPlayers/5) + 1
-#old    loopAmount = int((amountOfPlayers - amountOfPlayers % 5)/5) + 1
 
-for i in range(loopAmount):
+for i in range(amountOfPlayers):
+    #Change the order of color assignments every 5th iteration
+    if i%5 == 0:
+        random.shuffle(colorList)
 
-    #Change the order of color asigning each itteration
-    random.shuffle(colorsList)
-    
-    #Determine how many players still needs asigning at begining of each itteration
-    playersLeft = len(playerList)
-    
-    if playersLeft >= 5:
-
-        for j in range(5):
-            name = playerList.pop()
-            color = colorsList[j]
-
-            assignedList.append(name + " - " + color)
-
-    else:
-        for j in range(len(playerList)):
-            name = playerList.pop()
-            color = colorsList[j]
-
-            assignedList.append(name + " - " + color)
+    name = playerList.pop()
+    color = colorList[i%5]
+    assignedList.append(name + " - " + color)
 
 #Print the assigned color of each player
 for i in range(len(assignedList)):
