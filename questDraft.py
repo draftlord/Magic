@@ -9,7 +9,6 @@ assignedList = []
 
 #Shuffle the players as well to prevent knowledge of 5 first not sharing color etc.
 random.shuffle(playerList)
-
 amountOfPlayers = len(playerList)
 
 for i in range(amountOfPlayers):
